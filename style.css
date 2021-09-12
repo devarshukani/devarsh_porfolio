@@ -124,7 +124,7 @@ section .title::after{
     color: crimson;
 }
 .navbar.sticky .menu li a:hover{
-    color: #fff;
+    color: crimson;
 }
 
 /* menu btn styling */
@@ -887,7 +887,7 @@ a:hover {
 
 
 
-
+/*timeline*/
 .timeline {
   width: 100%;
   max-width: 800px;
@@ -966,5 +966,4 @@ a:hover {
   content: "–";
   margin-right: .5em;
 }
-
 

@@ -1,72 +1,94 @@
-$(document).ready(function(){
-    $(window).scroll(function(){
-        // sticky navbar on scroll script
-        if(this.scrollY > 20){
-            $('.navbar').addClass("sticky");
-        }else{
-            $('.navbar').removeClass("sticky");
-        }
-        
-        // scroll-up button show/hide script
-        if(this.scrollY > 500){
-            $('.scroll-up-btn').addClass("show");
-        }else{
-            $('.scroll-up-btn').removeClass("show");
-        }
-    });
+letterCarousel('.Frist1','.big-title');
+fun1('.Frist2','.big-title');
+letterCarousel('.Frist3','.big-title');
+fun1('.Frist4','.big-title');
 
-    // slide-up script
-    $('.scroll-up-btn').click(function(){
-        $('html').animate({scrollTop: 0});
-        // removing smooth scroll on slide-up button click
-        $('html').css("scrollBehavior", "auto");
-    });
+// $('#maindiv1').width($('#div1').width());
 
-    $('.navbar .menu li a').click(function(){
-        // applying again smooth scroll on menu items click
-        $('html').css("scrollBehavior", "smooth");
-    });
 
-    // toggle menu/navbar script
-    $('.menu-btn').click(function(){
-        $('.navbar .menu').toggleClass("active");
-        $('.menu-btn i').toggleClass("active");
-    });
+function letterCarousel(parent_cls,child_cls) {
+		var e = jQuery(parent_cls+' '+child_cls),
+		t = jQuery(window).height();
+		jQuery(window).on("scroll", function() {
+			if (jQuery(parent_cls).length) {
+				var t = jQuery(document).scrollTop() + jQuery(window).height(),
+				n = jQuery(parent_cls).offset().top;
+				
+				if (n <= t) {
+					var i = jQuery(document).scrollTop() - n + jQuery(window).height();
+					var scroll = i - 150;
+					var scroll_slow = scroll + ((scroll/70)/100);
+					var img_scroll = scroll_slow * 1;
+					e.css({
+						transform: "translateX(" + img_scroll + "px)"
+					})
+				}
+			}
+		});
+	}
 
-    // typing text animation script
-    var typed = new Typed(".typing", {
-        strings: ["Software Developer"],
-        typeSpeed: 100,
-        backSpeed: 60,
-        loop: true
-    });
+  function fun1(parent_cls,child_cls) {
+		var e = jQuery(parent_cls+' '+child_cls),
+		t = jQuery(window).height();
+		jQuery(window).on("scroll", function() {
+			if (jQuery(parent_cls).length) {
+				var t = jQuery(document).scrollTop() + jQuery(window).height(),
+				n = jQuery(parent_cls).offset().top;
+				
+				if (n <= t) {
+					var i = jQuery(document).scrollTop() - n + jQuery(window).height();
+					var scroll = i - 0;
+					var scroll_slow = scroll + ((scroll/70)/100);
+					var img_scroll = scroll_slow * 1;
+					e.css({
+						transform: "translateX(-" + img_scroll + "px) "
 
-    var typed = new Typed(".typing-2", {
-        strings: ["Devarsh"],
-        typeSpeed: 100,
-        backSpeed: 60,
-        loop: true
-    });
+					})
+				}
+			}
+		});
+	}
 
-    // owl carousel script
-    $('.carousel').owlCarousel({
-        margin: 20,
-        // loop: true,
-        //autoplayTimeOut: 2000,
-        //autoplayHoverPause: true,
-        responsive: {
-            0:{
-                items: 1,
-                nav: false
-            },
-            600:{
-                items: 2,
-                nav: false
-            },
-            1000:{
-                items: 3,
-                nav: false
-            }
-        }
-    });
-});
+	function sendEmail() 
+	{
+		window.location = "mailto:me.devarshukani@gmail.com"
+	}
+
+
+function changeDef(){
+	document.getElementById("change1").style.color = "#6080CF";
+	document.getElementById("change2").style.color = "#6080CF";
+	document.getElementById("change1").style.transitionDuration = "0.6s";
+	document.getElementById("change2").style.transitionDuration = "0.6s";
+}
+
+function resetDef(){
+	document.getElementById("change1").style.color = "#777777";
+	document.getElementById("change2").style.color = "#777777";
+	document.getElementById("change1").style.transitionDuration = "0.6s";
+	document.getElementById("change2").style.transitionDuration = "0.6s";
+}
+
+function changeskills(){
+	document.getElementById("skillshover1").style.color = "#6080CF";
+	document.getElementById("skillshover2").style.color = "#6080CF";
+	document.getElementById("skillshover1").style.transitionDuration = "0.6s";
+	document.getElementById("skillshover2").style.transitionDuration = "0.6s";
+}
+
+function resetskills(){
+	document.getElementById("skillshover1").style.color = "#777777";
+	document.getElementById("skillshover2").style.color = "#777777";
+	document.getElementById("skillshover1").style.transitionDuration = "0.6s";
+	document.getElementById("skillshover2").style.transitionDuration = "0.6s";
+}
+
+
+// Reload page at start 
+
+window.onload = function() {
+    if(!window.location.hash) {
+        window.location = window.location + '#devarshukani';
+        window.location.reload();
+    }
+}
